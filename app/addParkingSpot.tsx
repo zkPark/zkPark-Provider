@@ -20,7 +20,6 @@ import supabase from "./supabaseClient";
 import { router } from "expo-router";
 import axios from "axios";
 
-// Define the type for the parking spot data
 type SpotData = {
   lat: string;
   long: string;
@@ -28,18 +27,16 @@ type SpotData = {
   comments: string;
   purl1: string;
   purl2: string;
-  durl: string; // Driver's license URL
-  lurl: string; // Lease document URL
+  durl: string;
+  lurl: string;
   email_id: string;
 };
 
-// Define the type for the verification data
 type VerificationData = {
   license: LicenseDetails;
   lease: LeaseDetails;
 };
 
-// Define the type for the license details
 type LicenseDetails = {
   name: string;
   dob: string;
@@ -49,7 +46,6 @@ type LicenseDetails = {
   phone: string;
 };
 
-// Define the type for the lease details
 type LeaseDetails = {
   owner_name: string;
   property_address: string;

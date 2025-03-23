@@ -14,7 +14,6 @@ import { FontAwesome5, Feather } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
 import { Platform } from "react-native";
 
-// Interface for user data
 interface UserData {
   email_id: string;
   age: number | null;
@@ -198,8 +197,6 @@ const Profile = () => {
           );
 
           if (result.type === "success") {
-            // If we have params in the URL, we could extract wallet address
-            // This requires server-side setup for proper auth flow
             console.log("Auth session success:", result);
 
             // For now, just prompt the user to manually input their address

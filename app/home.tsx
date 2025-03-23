@@ -1,20 +1,19 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
-import supabase from "./supabaseClient"; // Import Supabase client
-import { FontAwesome } from "@expo/vector-icons"; // For logout icon
+import supabase from "./supabaseClient";
+import { FontAwesome } from "@expo/vector-icons";
 
 const HomePage = () => {
   const router = useRouter();
 
-  // Handle logout
   const handleLogout = async () => {
     try {
-      const { error } = await supabase.auth.signOut(); // Sign out from Supabase
+      const { error } = await supabase.auth.signOut();
       if (error) {
         throw error;
       }
-      router.replace("/"); // Redirect to login page after logout
+      router.replace("/");
     } catch (error) {
       console.error("Error logging out:", error);
       alert("Failed to log out. Please try again.");
@@ -23,13 +22,11 @@ const HomePage = () => {
 
   return (
     <View className="flex-1 bg-gray-900 p-6">
-      {/* Header */}
       <View className="pt-16">
         <View className="flex-row justify-between items-center">
           <Text className="text-5xl font-bold text-yellow-400 font-pbold">
             ParkMiner
           </Text>
-          {/* Logout Button */}
           <TouchableOpacity onPress={handleLogout}>
             <FontAwesome name="sign-out" size={24} color="#FBBF24" />
           </TouchableOpacity>
@@ -39,7 +36,6 @@ const HomePage = () => {
         </Text>
       </View>
 
-      {/* Buttons with definite spacing using style instead of className */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => router.push("/parking")}
@@ -75,7 +71,6 @@ const HomePage = () => {
   );
 };
 
-// Using StyleSheet for more reliable spacing
 const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
@@ -85,7 +80,7 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     paddingVertical: 16,
-    marginBottom: 32, // This adds 32 pixels of space between buttons
+    marginBottom: 32,
   },
 });
 

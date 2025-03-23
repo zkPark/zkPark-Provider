@@ -9,9 +9,9 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FontAwesome, Feather, FontAwesome5 } from "@expo/vector-icons"; // For icons
-import { router } from "expo-router"; // Expo Router
-import supabase from "./supabaseClient"; // Import Supabase client
+import { FontAwesome, Feather, FontAwesome5 } from "@expo/vector-icons";
+import { router } from "expo-router";
+import supabase from "./supabaseClient";
 import "../global.css";
 
 const SignupPage = () => {
@@ -63,8 +63,6 @@ const SignupPage = () => {
         setLoading(false);
         return;
       }
-
-      // Sign up the user with Supabase Auth
       console.log("Signing up user with Supabase Auth...");
       const { data: authData, error: signupError } = await supabase.auth.signUp(
         {
@@ -81,12 +79,11 @@ const SignupPage = () => {
       }
 
       console.log("Wallet created. Saving user details...");
-      // Save user details and wallet info to the user table
       const { data, error: insertError } = await supabase.from("user").insert([
         {
           email_id: email,
-          pwd: password, // Note: In production, never store plain-text passwords
-          age: parseInt(age), // Store age as an integer
+          pwd: password,
+          age: parseInt(age),
         },
       ]);
 
@@ -97,8 +94,7 @@ const SignupPage = () => {
       }
 
       console.log("User details saved successfully. Redirecting to login...");
-      // Redirect to the login screen
-      router.replace("/"); // Navigate to the root route (login page)
+      router.replace("/");
     } catch (error) {
       console.error("Unexpected error during signup:", error);
       Alert.alert("Error", "An error occurred during signup.");
@@ -111,14 +107,11 @@ const SignupPage = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="w-full justify-center h-full px-7 my-6">
-          {/* Custom Back Button */}
           <View className="mb-10">
             <TouchableOpacity onPress={() => router.back()}>
               <FontAwesome name="arrow-left" size={24} color="#d1d5db" />
             </TouchableOpacity>
           </View>
-
-          {/* Heading: ZKParkMiner */}
           <Text className="text-4xl font-psemibold text-yellow-400">
             ZKParkMiner
           </Text>
@@ -127,7 +120,6 @@ const SignupPage = () => {
           </Text>
 
           <View className="mt-10">
-            {/* Email Input */}
             <View className="mb-6">
               <Text className="text-xl text-gray-300 block mb-2 font-psemibold">
                 Email
@@ -143,7 +135,6 @@ const SignupPage = () => {
               />
             </View>
 
-            {/* Password Input */}
             <View className="mb-6 relative">
               <Text className="text-xl text-gray-300 block mb-2 font-psemibold">
                 Password
@@ -170,7 +161,6 @@ const SignupPage = () => {
               </View>
             </View>
 
-            {/* Confirm Password Input */}
             <View className="mb-6 relative">
               <Text className="text-xl text-gray-300 block mb-2 font-psemibold">
                 Confirm Password
@@ -203,8 +193,6 @@ const SignupPage = () => {
                 </Text>
               )}
             </View>
-
-            {/* Age Input */}
             <View className="mb-6">
               <Text className="text-xl text-gray-300 block mb-2 font-psemibold">
                 Age
@@ -222,8 +210,6 @@ const SignupPage = () => {
                 placeholderTextColor="#6b7280"
               />
             </View>
-
-            {/* Sign Up Button */}
             <TouchableOpacity
               onPress={handleSignup}
               disabled={loading}
@@ -238,13 +224,10 @@ const SignupPage = () => {
               )}
             </TouchableOpacity>
 
-            {/* Message: "Signing up will create a new wallet" */}
             <Text className="text-center text-gray-300 font-psemibold mt-4">
               Signing up will create a new wallet.
             </Text>
           </View>
-
-          {/* Social Login Section */}
           <View className="mt-8">
             <View className="flex flex-row items-center gap-4 mb-6">
               <View className="flex-1 border-t border-gray-500" />

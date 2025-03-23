@@ -11,8 +11,8 @@ type SpotData = {
   parkingspot_image2_url: string;
   parkingspot_image3_url: string;
   comments: string;
-  provider_account_addr: string; // Add provider_account_addr
-  provider_evm_addr: string; // Add provider_evm_addr
+  provider_account_addr: string;
+  provider_evm_addr: string;
 };
 
 export const parkingSpotService = async (spotData: SpotData) => {
