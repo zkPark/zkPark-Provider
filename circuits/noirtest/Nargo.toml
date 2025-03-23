@@ -1,0 +1,6 @@
+[package]
+name = "noirage"
+type = "bin"
+authors = ["Vaibhav"]
+
+[dependencies]
