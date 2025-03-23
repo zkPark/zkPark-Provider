@@ -13,10 +13,10 @@ import { decode } from "base64-arraybuffer";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
-import supabase from "./supabaseClient"; // Import Supabase client
+import supabase from "./supabaseClient";
 
 const AddParkingPhotos = () => {
-  const [photos, setPhotos] = useState<string[]>([]); // Array to store photo URIs
+  const [photos, setPhotos] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   // Request camera and gallery permissions
@@ -69,8 +69,7 @@ const AddParkingPhotos = () => {
       setPhotos((prev) => [...prev, result.assets[0].uri]);
     }
   };
-
-  // Upload photos to Supabase Storage using ArrayBuffer
+  
   const uploadPhotos = async () => {
     if (photos.length === 0) {
       Alert.alert("Error", "Please add at least one photo.");
@@ -101,7 +100,7 @@ const AddParkingPhotos = () => {
           const { data, error: uploadError } = await supabase.storage
             .from("parking_images")
             .upload(fileName, arrayBuffer, {
-              upsert: true, // Optional, if you want to overwrite the file
+              upsert: true,
               contentType: "image/jpeg", // Adjust based on your image type
             });
 

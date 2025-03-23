@@ -9,9 +9,9 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Feather, FontAwesome5 } from "@expo/vector-icons"; // For icons
+import { Feather, FontAwesome5 } from "@expo/vector-icons"; 
 import { router } from "expo-router"; // Expo Router
-import supabase from "./supabaseClient"; // Import Supabase client
+import supabase from "./supabaseClient"; 
 import "../global.css";
 
 const LoginPage = () => {
